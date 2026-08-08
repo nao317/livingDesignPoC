@@ -1,0 +1,8 @@
+[submodule "backend"]
+	path = backend
+	url = git@github.com:nao317/LDback.git
+	branch = main
+[submodule "frontend"]
+	path = frontend
+	url = git@github.com:nao317/LDfront.git
+	branch = main
