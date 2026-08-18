@@ -75,7 +75,7 @@ cd ..
 cd backend
 python3 -m venv .venv
 .venv/bin/python -m pip install --upgrade pip
-.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m pip install -r requirements-dev.txt
 cd ..
 ```
 
@@ -101,9 +101,11 @@ cd ..
 
 ```bash
 cd backend
-.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python -m pip install -r requirements-dev.txt
 .venv/bin/python -m pip check
 .venv/bin/python -m compileall -q app
+.venv/bin/python -m ruff check .
+.venv/bin/python -m pytest
 .venv/bin/python -c "from app.main import app; print(app.title)"
 cd ..
 ```
@@ -194,11 +196,11 @@ curl --fail --silent --show-error http://127.0.0.1:8000/health
 
 ### 自動テスト
 
-frontendには現在lintとbuildによる確認があります。backendはpytestを実行するCI構成ですが、
-現時点では `tests/` が未作成です。テスト追加後は次のコマンドで実行します。
+frontendはlintとbuild、backendはRuffとpytestで確認します。
 
 ```bash
 cd backend
+.venv/bin/python -m ruff check .
 .venv/bin/python -m pytest
 ```
 

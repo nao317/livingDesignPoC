@@ -131,4 +131,4 @@ jobs:
       - name: Pytest
         if: steps.check.outputs.exists == 'true'
         working-directory: backend
-        run: pytest
+        run: python -m pytest
